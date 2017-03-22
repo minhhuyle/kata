@@ -8,26 +8,26 @@ class Coffee{
         this.adapter = adapter;
     }
 
-    makeCoffe(command){
-        return this.adapter.makeCoffe(command);
+    makeCoffee(command){
+        return this.adapter.makeCoffee(command);
     }
 
     makeTea(command){
         return this.adapter.makeTea(command);
     }
 
-    makeChocolat(command){
-        return this.adapter.makeChocolat(command);
+    makeChocolate(command){
+        return this.adapter.makeChocolate(command);
     }
 }
 
 
-class DrinkMakerProtocole extends CoffeeAdapte{
+class DrinkMakerProtocole{
     constructor(){
         this.visitor = new DrinkVisitor();
     }
 
-    makeCoffe(sugar){
+    makeCoffee(sugar){
         return 'C:' + this.visitor.visit(sugar);
     }
 
@@ -35,7 +35,7 @@ class DrinkMakerProtocole extends CoffeeAdapte{
         return 'T:' + this.visitor.visit(sugar);
     }
 
-    makeChocolat(sugar){
+    makeChocolate(sugar){
         return 'H:'+ this.visitor.visit(sugar);
     }
 }
@@ -47,9 +47,11 @@ class DrinkVisitor{
         if(sugar > 0){
             result += sugar +":0";
         }else{
-            result += "::";
+            result += ":";
         }
 
         return result;
     }
 }
+module.exports.coffee = Coffee;
+module.exports.drinkMakerProtocole = DrinkMakerProtocole;
